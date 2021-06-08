@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "977272129175",
+    "project_id": "winged-5ac5d",
+    "storage_bucket": "winged-5ac5d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:977272129175:android:094a573f79d9ef93524bd2",
+        "android_client_info": {
+          "package_name": "com.example.winged"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "977272129175-h36vorenv243ls870eipun9v7egmbqgf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3Z_uwx-skT6h7agQ68XB9JkmpapKeTLo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "977272129175-h36vorenv243ls870eipun9v7egmbqgf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
