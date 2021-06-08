@@ -28,6 +28,13 @@ Payment - This module allows the user to make payment for the purchase of produc
 Admin - Admin can update the products and stock.
 
 
+## Tools & Technologies Used
+
+Cross Platform Application : Flutter 2.0
+
+IDE : Android studio & Microsoft Visual Studio Code
+
+Database : Firebase
 
 
 
