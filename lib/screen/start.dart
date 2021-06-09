@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:winged/screen/building.dart';
+import 'package:winged/screen/building_screen.dart';
 import 'cart_items.dart';
 import 'qr.dart';
 
@@ -113,90 +115,96 @@ class _StartState extends State<Start> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        drawer: StreamBuilder(
-          stream: db
-              .collection("Users")
-              .where('mobile', isEqualTo: num)
-              .snapshots(),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData)
-              return new Container(child: Text('loading...'));
-            return Drawer(
-              elevation: 20,
-              child: Column(
-                children: <Widget>[
-                  UserAccountsDrawerHeader(
-                    accountName: Text(snapshot.data.docs[0]['name']),
-                    accountEmail: Text(snapshot.data.docs[0]['mobile']),
-                    decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent,
+          drawer: StreamBuilder(
+            stream: db
+                .collection("Users")
+                .where('mobile', isEqualTo: num)
+                .snapshots(),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData)
+                return new Container(child: Text('loading...'));
+              return Drawer(
+                elevation: 20,
+                child: Column(
+                  children: <Widget>[
+                    UserAccountsDrawerHeader(
+                      accountName: Text(snapshot.data.docs[0]['name']),
+                      accountEmail: Text(snapshot.data.docs[0]['mobile']),
+                      decoration: BoxDecoration(
+                        color: Colors.lightBlueAccent,
+                      ),
                     ),
-                  ),
-                  ListTile(
-                    title: Text('Winged Points'),
-                    leading: Icon(Icons.score_outlined),
-                    onTap: () {
-                      showdialog(snapshot.data.docs[0]['points']);
-                    },
-                  ),
-                  Divider(
-                    height: 0.1,
-                  ),
-                  ListTile(
-                    title: Text('History'),
-                    leading: Icon(Icons.history),
-                  ),
-                  Divider(
-                    height: 0.1,
-                  ),
-                  ListTile(
-                    title: Text('Terms & Conditions'),
-                    leading: Icon(Icons.book_outlined),
-                  ),
-                  Divider(
-                    height: 0.1,
-                  ),
-                  ListTile(
-                    title: Text('About us'),
-                    leading: Icon(Icons.people_outline),
-                  ),
-                  Divider(
-                    height: 0.1,
-                  )
-                ],
-              ),
-            );
-          },
-        ),
-        appBar: AppBar(
-          title: Text('Wing\'ed',
-              style: GoogleFonts.pacifico(
-                  fontStyle: FontStyle.italic, fontSize: 25.0)),
+                    ListTile(
+                      title: Text('Winged Points'),
+                      leading: Icon(Icons.score_outlined),
+                      onTap: () {
+                        showdialog(snapshot.data.docs[0]['points']);
+                      },
+                    ),
+                    Divider(
+                      height: 0.1,
+                    ),
+                    ListTile(
+                      title: Text('History'),
+                      leading: Icon(Icons.history),
+                    ),
+                    Divider(
+                      height: 0.1,
+                    ),
+                    ListTile(
+                      title: Text('Terms & Conditions'),
+                      leading: Icon(Icons.book_outlined),
+                    ),
+                    Divider(
+                      height: 0.1,
+                    ),
+                    ListTile(
+                      title: Text('About us'),
+                      leading: Icon(Icons.people_outline),
+                    ),
+                    Divider(
+                      height: 0.1,
+                    )
+                  ],
+                ),
+              );
+            },
+          ),
+          appBar: AppBar(
+            title: Text('Wing\'ed',
+                style: GoogleFonts.pacifico(
+                    fontStyle: FontStyle.italic, fontSize: 25.0)),
+            backgroundColor: Colors.lightBlueAccent,
+            centerTitle: true,
+          ),
           backgroundColor: Colors.lightBlueAccent,
-          centerTitle: true,
-        ),
-        backgroundColor: Colors.lightBlueAccent,
-        bottomNavigationBar: CurvedNavigationBar(
-          index: _currentIndex,
-          backgroundColor: Colors.lightBlueAccent,
-          items: <Widget>[
-            Icon(Icons.list, size: 30),
-            Icon(Icons.qr_code, size: 25),
-            Icon(Icons.shopping_cart, size: 30),
-          ],
-          onTap: (index) {
-            setState(() {
+          bottomNavigationBar: CurvedNavigationBar(
+            index: _currentIndex,
+            backgroundColor: Colors.lightBlueAccent,
+            items: <Widget>[
+              Icon(Icons.list, size: 30),
+              Icon(Icons.qr_code, size: 25),
+              Icon(Icons.shopping_cart, size: 30),
+            ],
+            onTap: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
               _currentIndex = index;
-            });
-            _currentIndex = index;
-            /*if (index == 1) {
+              /*if (index == 1) {
               Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => Qr()));
             }*/
-          },
-        ),
-        body: tabs[_currentIndex],
-      ),
+            },
+          ),
+          body: tabs[_currentIndex],
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.home_outlined),
+            onPressed: () {
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => BuildingScreen()));
+            },
+          )),
     );
   }
 }

@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  provider: ^5.0.0
   firebase_core: ^1.1.1
   firebase_database: ^6.1.2
   firebase_auth: ^1.2.0
@@ -66,6 +67,15 @@ flutter:
     - assets/images/first.png
     - assets/gif/addcart.gif
     - assets/gif/points.gif
+    - assets/img/tile_01.png
+    - assets/img/tile_02.png
+    - assets/img/tile_03.png
+    - assets/img/tile_04.png
+    - assets/img/tile_05.png
+    - assets/img/tile_06.png
+    - assets/img/tile_07.png
+    - assets/img/tile_08.png
+    - assets/img/tile_09.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
